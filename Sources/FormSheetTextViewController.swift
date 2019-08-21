@@ -125,15 +125,15 @@ open class FormSheetTextViewController: UIViewController {
         attributedText.addAttribute(NSAttributedString.Key.font, value: bodyFont, range: NSRange(location: 0, length: attributedText.length))
         composeTextView.attributedText = attributedText
 
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
-        toolbar.barStyle = .default
-        toolbar.backgroundColor = UIColor.white
 
-        if isPreview {
-            toolbar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: self.previewPageTitle, style: .done, target: self, action: #selector(self.preview))]
-        }
+		if isPreview {
+			let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 45))
+			toolbar.barStyle = .default
+			toolbar.backgroundColor = UIColor.white
+			toolbar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: self.previewPageTitle, style: .done, target: self, action: #selector(self.preview))]
+			toolbar.sizeToFit()
+			composeTextView.inputAccessoryView = toolbar
+		}
 
-        toolbar.sizeToFit()
-        composeTextView.inputAccessoryView = toolbar
     }
 }
